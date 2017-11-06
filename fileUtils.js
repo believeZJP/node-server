@@ -7,11 +7,31 @@ const fileUtils = {
     },
     readFileSync (filename) {
         // 这里是异步读取文件
-        fs.readFile(__dirname + '/datajson/datalist.json', function(err, data){
+        fs.readFile(__dirname + filename, function(err, data){
             if(err){
                 console.log(err)
+                return err
             }else{
                 console.log(data)
+                return data
+            }
+        })
+    },
+    writeFile (filename, data) {
+        fs.writeFile(__dirname + filename, data, function(err){
+            if(err) {
+                return err
+            } else {
+                return {success: true}
+            }
+        })
+    },
+    writeFileSync(filename, data) {
+        fs.writeFileSync(__dirname + filename, data, function(err){
+            if(err) {
+                return err
+            } else {
+                return {success: true}
             }
         })
     }
