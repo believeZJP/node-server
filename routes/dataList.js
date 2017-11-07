@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+/* GET dataList listing. */
+router.all('/', function(req, res, next) {
     let dataList = {
         "success": true,
         "data": {
@@ -90,5 +90,21 @@ router.get('/', function(req, res, next) {
       }
     res.send(dataList);
 });
+
+// 添加
+router.all('/add', function (req, res, next) {
+	let body = req.body
+	let name = body.name
+	let url = body.url
+	let email = body.email
+	let address = body.address
+	let string = body.string
+	let number = body.number
+	let boolean = body.boolean
+	let object = body.object
+	
+
+
+})
 
 module.exports = router;

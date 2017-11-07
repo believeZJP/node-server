@@ -18,13 +18,13 @@ const fileUtils = {
         })
     },
     writeFile (filename, data) {
-        fs.writeFile(__dirname + filename, data, function(err){
-            if(err) {
-                return err
-            } else {
-                return {success: true}
-            }
-        })
+        let res = fs.writeFile(__dirname + filename, data)
+        return res
+        if(res) {
+            return err
+        } else {
+            return {success: true}
+        }
     },
     writeFileSync(filename, data) {
         fs.writeFileSync(__dirname + filename, data, function(err){
