@@ -87,4 +87,34 @@ router.all('/reset', function(req, res, next){
     res.send(resObj)
 })
 
+router.all('/regist', function(req, res, next){
+    console.log(req, 'reset')
+    let resObj = {
+        success: true
+    }
+    let username=req.body.username
+    let password=req.body.password
+    if (!password || !username) {
+        resObj.success = false
+        resObj.msg = '用户名或密码不能为空'
+        resObj.errorCode = 3006
+    } else {
+        // 注册
+        let data = fileUtils.readFile('/datajson/users.json')
+        data = JSON.parse(data)
+        if(data.success) {
+            let users = data.users
+            let newUser = {username: username, password: password}
+            users.push(newUser)
+            data.users = users
+            // 这里没有返回失败或成功的信息，没法判断是失败还是成功，默认成功
+            fileUtils.writeFile('/datajson/users.json', JSON.stringify(data))
+
+            resObj.success = true
+            resObj.msg = '注册成功'
+        }
+    }
+    res.send(resObj)
+})
+
 module.exports = router;
