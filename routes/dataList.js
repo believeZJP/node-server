@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET dataList listing. */
-router.all('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
     var dataList = {
         "success": true,
         "data": {
@@ -92,7 +92,7 @@ router.all('/', function(req, res, next) {
 });
 
 // 添加
-router.all('/add', function (req, res, next) {
+router.post('/add', function (req, res, next) {
 	var body = req.body
 	var name = body.name
 	var url = body.url
