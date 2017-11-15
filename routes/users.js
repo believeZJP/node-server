@@ -6,12 +6,12 @@ var fileUtils = require('../fileUtils')
 // router.get('/', function(req, res, next) {
     // 这里改成all是为了无论请求是get还是post都走这个方法
 router.all('/', function(req, res, next) {
-    let resObj = {
+    var resObj = {
         success: true
     }
-    let username=req.body.username;
-    let password=req.body.password;
-    let result
+    var username=req.body.username;
+    var password=req.body.password;
+    var result
     if (!username) {
         resObj.success = false
         resObj.msg = '请输入用户名'
@@ -23,10 +23,10 @@ router.all('/', function(req, res, next) {
         res.errorCode = 3002
     }
     if (username && password) {
-        let data = fileUtils.readFile('/datajson/users.json')
+        var data = fileUtils.readFile('/datajson/users.json')
         data = JSON.parse(data)
         if(data.success) {
-            let users = data.users
+            var users = data.users
             result = users.find(ele => {
                 return ele.username === username && ele.password === password
             })
@@ -47,23 +47,23 @@ router.all('/', function(req, res, next) {
 
 router.all('/reset', function(req, res, next){
     console.log(req, 'reset')
-    let resObj = {
+    var resObj = {
         success: true
     }
-    let username=req.body.username
-    let password=req.body.password
-    let newPassword = req.body.newPassword
+    var username=req.body.username
+    var password=req.body.password
+    var newPassword = req.body.newPassword
     if (password !== newPassword) {
         resObj.success = false
         resObj.msg = '密码不一致'
         resObj.errorCode = 3004
     } else {
         // 修改密码
-        let data = fileUtils.readFile('/datajson/users.json')
+        var data = fileUtils.readFile('/datajson/users.json')
         data = JSON.parse(data)
         if(data.success) {
-            let users = data.users
-            let index //定义一个数字，用来确定当前用户是哪个
+            var users = data.users
+            var index //定义一个数字，用来确定当前用户是哪个
             result = users.find((ele, i) => {
                 index = i
                 return ele.username === username
@@ -89,22 +89,22 @@ router.all('/reset', function(req, res, next){
 
 router.all('/regist', function(req, res, next){
     console.log(req, 'reset')
-    let resObj = {
+    var resObj = {
         success: true
     }
-    let username=req.body.username
-    let password=req.body.password
+    var username=req.body.username
+    var password=req.body.password
     if (!password || !username) {
         resObj.success = false
         resObj.msg = '用户名或密码不能为空'
         resObj.errorCode = 3006
     } else {
         // 注册
-        let data = fileUtils.readFile('/datajson/users.json')
+        var data = fileUtils.readFile('/datajson/users.json')
         data = JSON.parse(data)
         if(data.success) {
-            let users = data.users
-            let newUser = {username: username, password: password}
+            var users = data.users
+            var newUser = {username: username, password: password}
             users.push(newUser)
             data.users = users
             // 这里没有返回失败或成功的信息，没法判断是失败还是成功，默认成功

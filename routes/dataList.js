@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET dataList listing. */
 router.all('/', function(req, res, next) {
-    let dataList = {
+    var dataList = {
         "success": true,
         "data": {
           "projects": [
@@ -93,15 +93,15 @@ router.all('/', function(req, res, next) {
 
 // 添加
 router.all('/add', function (req, res, next) {
-	let body = req.body
-	let name = body.name
-	let url = body.url
-	let email = body.email
-	let address = body.address
-	let string = body.string
-	let number = body.number
-	let boolean = body.boolean
-	let object = body.object
+	var body = req.body
+	var name = body.name
+	var url = body.url
+	var email = body.email
+	var address = body.address
+	var string = body.string
+	var number = body.number
+	var boolean = body.boolean
+	var object = body.object
 	
 
 

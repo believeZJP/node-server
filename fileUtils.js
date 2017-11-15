@@ -2,7 +2,7 @@ var fs = require('fs')
 var path = require('path')
 const fileUtils = {
     readFile: function (filename) {
-        let data = fs.readFileSync(__dirname + filename, 'utf-8');
+        var data = fs.readFileSync(__dirname + filename, 'utf-8');
         return data
     },
     readFileSync (filename) {
@@ -18,7 +18,7 @@ const fileUtils = {
         })
     },
     writeFile (filename, data) {
-        let res = fs.writeFile(__dirname + filename, data)
+        var res = fs.writeFile(__dirname + filename, data)
         return res
         if(res) {
             return err
