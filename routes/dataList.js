@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET dataList listing. */
-router.post('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
     var dataList = {
         "success": true,
         "data": {

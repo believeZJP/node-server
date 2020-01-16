@@ -5,7 +5,7 @@ var fileUtils = require('../fileUtils')
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
     // 这里改成all是为了无论请求是get还是post都走这个方法
-router.post('/', function(req, res, next) {
+router.all('/', function(req, res, next) {
     var resObj = {
         success: true
     }
