@@ -1,0 +1,11 @@
+{
+  "pagea": {
+    "menu": "菜单"
+  },
+  "pageb": {
+    "login": "登录"
+  },
+  "pagec": {
+    "component": "组件"
+  }
+}
